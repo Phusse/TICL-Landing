@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 25% 14%;
+
+    --card: 220 20% 97%;
+    --card-foreground: 220 25% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 14%;
+
+    --primary: 200 80% 32%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 94%;
+    --secondary-foreground: 220 25% 14%;
+
+    --muted: 220 14% 94%;
+    --muted-foreground: 220 10% 46%;
+
+    --accent: 200 60% 94%;
+    --accent-foreground: 200 80% 28%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 89%;
+    --input: 220 13% 89%;
+    --ring: 200 80% 32%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 25% 14%;
+    --sidebar-primary: 200 80% 32%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 94%;
+    --sidebar-accent-foreground: 220 25% 14%;
+    --sidebar-border: 220 13% 89%;
+    --sidebar-ring: 200 80% 32%;
+
+    /* Custom tokens */
+    --surface: 220 20% 97%;
+    --navy: 220 40% 18%;
+    --blend-accent: 200 60% 96%;
+    --blend-navy: 220 30% 95%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-background/80 backdrop-blur-xl;
+    box-shadow: 0 1px 0 0 hsl(var(--border));
+  }
+
+  .glass-nav {
+    background: hsla(0, 0%, 100%, 0);
+    backdrop-filter: blur(0px);
+    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .glass-nav.scrolled {
+    background: hsla(0, 0%, 100%, 0.92);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 0 0 hsl(var(--border));
+  }
+
+  .bento-card {
+    @apply relative overflow-hidden rounded-xl bg-card p-6 md:p-8;
+    border: 1px solid hsl(var(--border));
+    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .bento-card:hover {
+    border-color: hsl(var(--primary) / 0.3);
+    box-shadow: 0 8px 30px -12px hsl(var(--primary) / 0.12);
+    transform: translateY(-2px);
+  }
+
+  .btn-ghost-cyan {
+    @apply relative px-6 py-2.5 rounded-lg font-medium text-sm tracking-wide border border-primary/40 text-primary;
+    transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .btn-ghost-cyan:hover {
+    @apply bg-primary/5 border-primary/60;
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost-cyan:active {
+    transform: scale(0.98);
+  }
+
+  .btn-solid-cyan {
+    @apply relative px-8 py-3 rounded-lg font-semibold text-sm tracking-wide bg-primary text-primary-foreground;
+    transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .btn-solid-cyan:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 4px 20px hsl(var(--primary) / 0.25);
+    transform: translateY(-1px);
+  }
+
+  .btn-solid-cyan:active {
+    transform: scale(0.98);
+  }
+
+  .section-divider {
+    border: none;
+  }
+
+  .blend-to-accent {
+    background: linear-gradient(to bottom, hsl(var(--background)), hsl(var(--blend-accent)));
+  }
+
+  .blend-accent {
+    background: hsl(var(--blend-accent));
+  }
+
+  .blend-from-accent {
+    background: linear-gradient(to bottom, hsl(var(--blend-accent)), hsl(var(--background)));
+  }
+
+  .blend-to-navy {
+    background: linear-gradient(to bottom, hsl(var(--background)), hsl(var(--blend-navy)));
+  }
+
+  .blend-navy {
+    background: hsl(var(--blend-navy));
+  }
+
+  .blend-from-navy {
+    background: linear-gradient(to bottom, hsl(var(--blend-navy)), hsl(var(--background)));
+  }
+
+  .marquee {
+    animation: marquee 20s linear infinite;
+  }
+
+  .marquee:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
