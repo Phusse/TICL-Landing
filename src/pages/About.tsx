@@ -37,7 +37,13 @@ const About = () => {
       {/* Hero */}
       <section className="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center opacity-15" style={{ backgroundImage: `url(${aboutBg})` }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
+
+        {/* Animated Blobs */}
+        <div className="absolute top-0 -left-4 w-72 h-72 bg-primary/20 rounded-full mix-blend-multiply filter blur-[80px] opacity-60 animate-blob" />
+        <div className="absolute top-0 -right-4 w-72 h-72 bg-sky-300/20 rounded-full mix-blend-multiply filter blur-[80px] opacity-60 animate-blob animation-delay-2000" />
+        <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-72 h-72 bg-blue-400/20 rounded-full mix-blend-multiply filter blur-[80px] opacity-60 animate-blob animation-delay-4000" />
+
+        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/95 to-background" />
         <div className="relative container mx-auto px-4 md:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <p className="text-primary font-mono text-xs tracking-widest uppercase mb-4">Who We Are</p>

@@ -8,7 +8,11 @@ const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative overflow-hidden pb-10">
+      {/* Background Blobs for aesthetic */}
+      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 rounded-full mix-blend-multiply filter blur-[100px] opacity-70 animate-blob pointer-events-none" />
+      <div className="absolute top-[20%] right-[-10%] w-[40%] h-[40%] bg-sky-300/20 rounded-full mix-blend-multiply filter blur-[100px] opacity-70 animate-blob animation-delay-2000 pointer-events-none" />
+
       <Navbar />
 
       <section className="pt-32 pb-16 md:pt-40 md:pb-20">
@@ -80,28 +84,28 @@ const Contact = () => {
                   >
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
-                        <label className="block text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">First Name *</label>
-                        <input required className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/50" />
+                        <label className="block text-xs font-medium text-foreground uppercase tracking-wider mb-2">First Name *</label>
+                        <input required className="w-full bg-background/50 border border-border/80 rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:bg-background transition-all shadow-sm" />
                       </div>
                       <div>
-                        <label className="block text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Last Name *</label>
-                        <input required className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/50" />
+                        <label className="block text-xs font-medium text-foreground uppercase tracking-wider mb-2">Last Name *</label>
+                        <input required className="w-full bg-background/50 border border-border/80 rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:bg-background transition-all shadow-sm" />
                       </div>
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Phone Number *</label>
-                      <input required type="tel" className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/50" />
+                      <label className="block text-xs font-medium text-foreground uppercase tracking-wider mb-2">Phone Number *</label>
+                      <input required type="tel" className="w-full bg-background/50 border border-border/80 rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:bg-background transition-all shadow-sm" />
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Email Address</label>
-                      <input type="email" className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/50" />
+                      <label className="block text-xs font-medium text-foreground uppercase tracking-wider mb-2">Email Address</label>
+                      <input type="email" className="w-full bg-background/50 border border-border/80 rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:bg-background transition-all shadow-sm" />
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Tell Us How We Can Help *</label>
-                      <textarea required rows={5} className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/50 resize-none" />
+                      <label className="block text-xs font-medium text-foreground uppercase tracking-wider mb-2">Tell Us How We Can Help *</label>
+                      <textarea required rows={5} className="w-full bg-background/50 border border-border/80 rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:bg-background transition-all resize-none shadow-sm" />
                     </div>
-                    <button type="submit" className="btn-solid-cyan w-full flex items-center justify-center gap-2">
-                      Submit <ArrowIcon />
+                    <button type="submit" className="btn-solid-cyan w-full flex items-center justify-center gap-2 group shadow-lg shadow-primary/20">
+                      Submit Message <ArrowIcon />
                     </button>
                   </form>
                 )}
@@ -117,7 +121,7 @@ const Contact = () => {
 };
 
 const ArrowIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
 );
 
 export default Contact;

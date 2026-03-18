@@ -11,7 +11,13 @@ const HeroSection = () => {
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${heroBg})` }}
       />
-      <div className="absolute inset-0 bg-background/60" />
+      <div className="absolute inset-0 bg-background/60 backdrop-blur-[2px]" />
+
+      {/* Animated Blobs */}
+      <div className="absolute top-0 -left-4 w-72 h-72 bg-primary/30 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob" />
+      <div className="absolute top-0 -right-4 w-72 h-72 bg-sky-300/30 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000" />
+      <div className="absolute -bottom-8 left-20 w-72 h-72 bg-blue-400/30 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-4000" />
+
       <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-transparent to-background" />
 
       <div className="relative z-10 container mx-auto px-4 md:px-8 pt-24 pb-20">

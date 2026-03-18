@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { ChevronDown, Cloud, Server, Monitor, Settings } from "lucide-react";
 import serviceConsulting from "@/assets/service-consulting.png";
@@ -137,11 +137,10 @@ const Offerings = () => {
                   <button
                     key={s.id}
                     onClick={() => { setActiveService(s.id); setOpenSubs({}); }}
-                    className={`w-full text-left px-5 py-4 rounded-xl flex items-center gap-3 transition-all duration-200 ${
-                      activeService === s.id
+                    className={`w-full text-left px-5 py-4 rounded-xl flex items-center gap-3 transition-all duration-200 ${activeService === s.id
                         ? "bg-accent border border-primary/20 text-foreground"
                         : "bg-card border border-border text-muted-foreground hover:text-foreground hover:bg-secondary"
-                    }`}
+                      }`}
                   >
                     <s.icon className={`w-5 h-5 shrink-0 ${activeService === s.id ? "text-primary" : ""}`} strokeWidth={1.5} />
                     <span className="text-sm font-medium">{s.title}</span>
@@ -185,16 +184,26 @@ const Offerings = () => {
                           <span className="font-semibold text-sm">{sub.title}</span>
                           <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
                         </button>
-                        {isOpen && (
-                          <div className="px-6 pb-6 space-y-4">
-                            {sub.items.map((item, idx) => (
-                              <div key={idx} className="pl-4 border-l-2 border-primary/20">
-                                {item.label && <h4 className="text-sm font-semibold mb-1">{item.label}</h4>}
-                                <p className="text-sm text-muted-foreground leading-relaxed">{item.text}</p>
+                        <AnimatePresence initial={false}>
+                          {isOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.3, ease: "easeInOut" }}
+                              className="overflow-hidden"
+                            >
+                              <div className="px-6 pb-6 space-y-4 pt-2">
+                                {sub.items.map((item, idx) => (
+                                  <div key={idx} className="pl-4 border-l-2 border-primary/30">
+                                    {item.label && <h4 className="text-sm font-semibold mb-1 text-foreground">{item.label}</h4>}
+                                    <p className="text-sm text-muted-foreground leading-relaxed">{item.text}</p>
+                                  </div>
+                                ))}
                               </div>
-                            ))}
-                          </div>
-                        )}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </div>
                     );
                   })}
